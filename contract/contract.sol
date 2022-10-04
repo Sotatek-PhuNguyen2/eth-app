@@ -90,8 +90,8 @@ contract Store {
 
     function refundMoneyUser()public payable {
         require(ownerRegisterCount[msg.sender] == 3,"Failed to refund");
-        (bool sent,) = msg.sender.call{value: msg.value}("");
+        (bool sent,) = msg.sender.call{value: 0.000001 ether}("");
         require(sent, "Failed to send Ether");
-        ownerRegisterCount[msg.sender] == 2;
+        ownerRegisterCount[msg.sender] = 2;
     }
 }
